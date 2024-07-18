@@ -11,11 +11,6 @@ const nextConfig = {
 			},
 		],
 	},
-
-	// Disable Edge Runtime
-	experimental: {
-		runtime: 'nodejs',
-	},
 };
 
 export default nextConfig;
