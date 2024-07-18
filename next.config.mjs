@@ -2,7 +2,6 @@
 const nextConfig = {
 	reactStrictMode: true,
 
-	// Existing image configuration
 	images: {
 		remotePatterns: [
 			{
@@ -13,16 +12,9 @@ const nextConfig = {
 		],
 	},
 
-	// Enable Edge Runtime for middleware
+	// Disable Edge Runtime
 	experimental: {
-		middleware: true,
-	},
-
-	// Configure middleware matcher
-	// This applies middleware to all routes
-	// Adjust if you want to limit it to specific routes
-	middleware: {
-		matcher: '/:path*',
+		runtime: 'nodejs',
 	},
 };
 
