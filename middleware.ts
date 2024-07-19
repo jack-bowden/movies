@@ -1,3 +1,3 @@
-import { middlewareLogic } from './app/middlewareCode';
+import { clerkMiddleware } from '@clerk/nextjs/server';
 
-export default middlewareLogic;
+export const middlewareLogic = clerkMiddleware();

@@ -1,7 +1,6 @@
 'use client';
 
 import { Result, TMDBProps } from '@/types';
-import { useState, useCallback } from 'react';
 import { InfiniteMovingCards } from './_components/InfiniteMovingCards';
 import MediaCard from '@/components/MediaCard';
 import Heading from '@/components/Heading';
