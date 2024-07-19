@@ -1,9 +1,7 @@
 'use client';
 
 import { FaRegHeart, FaHeart } from 'react-icons/fa';
-import { toggleFavorite } from '@/hooks/getToggleFavorites';
 import { Result } from '@/types';
-import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 
 interface FavoritesProps {

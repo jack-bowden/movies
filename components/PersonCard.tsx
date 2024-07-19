@@ -1,7 +1,6 @@
 'use client';
 
 import { Person } from '@/types';
-import Link from 'next/link';
 import Image from 'next/image';
 
 interface PersonCardProps {
