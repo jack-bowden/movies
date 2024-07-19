@@ -11,7 +11,6 @@ const nextConfig = {
 			},
 		],
 	},
-	runtime: 'edge',
 };
 
 export default nextConfig;

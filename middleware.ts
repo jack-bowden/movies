@@ -1,5 +1,5 @@
-// export const runtime = 'experimental-edge';
+export const runtime = 'experimental-edge';
 
-// import { clerkMiddleware } from '@clerk/nextjs/server';
+import { clerkMiddleware } from '@clerk/nextjs/server';
 
-// export default clerkMiddleware();
+export default clerkMiddleware();
