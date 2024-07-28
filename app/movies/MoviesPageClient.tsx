@@ -39,8 +39,6 @@ const MoviesPageClient = ({
 		setCurrentPage(page);
 	};
 
-	// TODO Create a handle toggle favorites function, if needed
-
 	return (
 		<main className='container mx-auto px-4 py-6'>
 			<div className='mb-6'>

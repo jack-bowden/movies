@@ -15,8 +15,6 @@ const SearchPage = ({
 	clerkUserId,
 	favorites,
 }: SearchProps) => {
-	// TODO Create a variable to get the search results
-
 	return (
 		<main className='container mx-auto px-4 py-6'>
 			{!query && (
