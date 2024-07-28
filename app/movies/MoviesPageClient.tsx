@@ -5,7 +5,7 @@ import MediaCard from '@/components/MediaCard';
 import Pagination from '@/components/Pagination';
 import Sort from '@/components/Sort';
 import { Button } from '@/components/ui/button';
-import { Cast, Result, TMDBProps } from '@/types';
+import { Result, TMDBProps } from '@/types';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 

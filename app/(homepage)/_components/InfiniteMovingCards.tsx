@@ -1,12 +1,9 @@
 'use client';
 
-import { useToggleFavorite } from '@/actions/useToggleFavorite';
-import Favorites from '@/components/Favorites';
 import { cn } from '@/lib/utils';
 import { Result, TMDBProps } from '@/types';
 import Link from 'next/link';
-import React, { useCallback, useEffect, useState } from 'react';
-import { FaHeart, FaRegHeart } from 'react-icons/fa';
+import React, { useEffect, useState } from 'react';
 
 interface InfiniteMovingCardsProps {
 	direction?: 'left' | 'right';
@@ -29,9 +26,6 @@ export const InfiniteMovingCards = ({
 }: InfiniteMovingCardsProps) => {
 	const containerRef = React.useRef<HTMLDivElement>(null);
 	const scrollerRef = React.useRef<HTMLUListElement>(null);
-
-	console.log('favorites:', favorites);
-	console.log('clerkUserId:', clerkUserId);
 
 	useEffect(() => {
 		addAnimation();
@@ -116,24 +110,6 @@ export const InfiniteMovingCards = ({
 						key={item.id}
 						className='relative'
 					>
-						{/* <div className='relative group'>
-							{isFavorite(favorites, item.id) ? (
-								<FaHeart
-									onClick={() => console.log('Clicked')}
-									className='absolute top-1 right-1 z-50 text-white transition-all duration-200 group-hover:opacity-100 group-hover:scale-110 cursor-pointer'
-									size={28}
-								/>
-							) : (
-								<FaRegHeart
-									onClick={() => console.log('Clicked')}
-									className='absolute top-1 right-1 z-50 text-white transition-all duration-200 group-hover:opacity-100 group-hover:scale-110 cursor-pointer'
-									size={28}
-								/>
-							)}
-							<p className='font-bold text-lg py-1 px-1.5 text-white absolute z-20 '>
-								{item.vote_average.toFixed(1)}
-							</p>
-						</div> */}
 						<Link href={`/movies/${item.id}`}>
 							<div
 								className='w-56 h-36 md:w-96 md:h-44 max-w-full relative rounded-2xl border flex-shrink-0 px-8 py-6 cursor-pointer'

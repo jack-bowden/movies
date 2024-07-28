@@ -7,8 +7,6 @@ export async function toggleFavorite(
 	clerkUserId: string | undefined
 ) {
 	const { id, ...rest } = favorite;
-	console.log('favorite:', favorite);
-	console.log('clerkUserId:', clerkUserId);
 
 	if (!clerkUserId || id === undefined) {
 		return null;

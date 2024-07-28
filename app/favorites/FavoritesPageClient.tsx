@@ -6,7 +6,6 @@ import MediaCard from '@/components/MediaCard';
 import { Button } from '@/components/ui/button';
 import { Result } from '@/types';
 import Heading from '@/components/Heading';
-import { useToggleFavorite } from '@/actions/useToggleFavorite';
 
 interface FavoritePageProps {
 	favorites: Result[];
@@ -26,7 +25,6 @@ const FavoritesPageClient = ({ favorites, clerkUserId }: FavoritePageProps) => {
 	}, []);
 
 	useEffect(() => {
-		// Update localFavorites when favorites prop changes
 		setLocalFavorites(favorites);
 	}, [favorites]);
 
@@ -36,6 +34,11 @@ const FavoritesPageClient = ({ favorites, clerkUserId }: FavoritePageProps) => {
 				<div className='grid grid-cols-3 gap-4 items-center'>
 					<Heading title='Favorites' />
 				</div>
+				{favorites.length === 0 && (
+					<p className='text-md md:text-lg pt-12 bg-gradient-to-b from-gray-300 to-gray-400 text-transparent bg-clip-text'>
+						No favorites found
+					</p>
+				)}
 			</div>
 			<div className='grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-4'>
 				<MediaCard

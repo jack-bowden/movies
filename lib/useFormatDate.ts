@@ -3,16 +3,13 @@ export function useFormatDate(dateInput: string | number | Date) {
 
 	let date;
 	if (typeof dateInput === 'string') {
-		// If it's a string, assume it's in YYYY-MM-DD format
 		date = new Date(dateInput);
 	} else if (typeof dateInput === 'number') {
-		// If it's a number, assume it's a timestamp
 		date = new Date(dateInput);
 	} else {
 		return 'Invalid Date';
 	}
 
-	// Check if the date is valid
 	if (isNaN(date.getTime())) {
 		return 'Invalid Date';
 	}

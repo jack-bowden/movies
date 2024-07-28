@@ -23,9 +23,8 @@ import {
 const navItems = [
 	{ pageName: 'Home', href: '/' },
 	{ pageName: 'Movies', href: '/movies' },
-	{ pageName: 'TV Shows', href: '/tv' },
+	{ pageName: 'TV Shows', href: '/tvshows' },
 	{ pageName: 'Favorites', href: '/favorites' },
-	{ pageName: 'Profile', href: '/profile' },
 ];
 
 interface NavSectionProps {

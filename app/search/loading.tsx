@@ -1,7 +1,5 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
-
 const SearchPageSkeleton = () => {
 	return (
 		<main className='container mx-auto px-4 py-6'>
