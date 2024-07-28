@@ -8,7 +8,7 @@ import { ClerkProvider } from '@clerk/nextjs';
 import { dark } from '@clerk/themes';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Analytics } from '@vercel/analytics/react';
+import Script from 'next/script';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -37,7 +37,24 @@ export default function RootLayout({
 				},
 			}}
 		>
-			<Analytics />
+			<Script
+				id='matomo'
+				strategy='afterInteractive'
+				dangerouslySetInnerHTML={{
+					__html: `
+            var _paq = window._paq = window._paq || [];
+            _paq.push(['trackPageView']);
+            _paq.push(['enableLinkTracking']);
+            (function() {
+              var u="//matomo.jackbowden.co.uk/";
+              _paq.push(['setTrackerUrl', u+'matomo.php']);
+              _paq.push(['setSiteId', '4']);
+              var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+              g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+            })();
+          `,
+				}}
+			/>
 			<html lang='en'>
 				<body className={inter.className}>
 					<ToastContainer />
