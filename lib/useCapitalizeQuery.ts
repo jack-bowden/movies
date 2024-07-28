@@ -1,4 +1,4 @@
-export const useCapitalizeQuery = (query: string) => {
+export const useCapitalizeQuery = (query: string | null) => {
 	if (!query) return '';
 
 	if (!query.includes(' '))

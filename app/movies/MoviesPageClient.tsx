@@ -1,5 +1,6 @@
 'use client';
 
+import getAllMoviesAction from '@/actions/getAllMoviesAction';
 import Heading from '@/components/Heading';
 import MediaCard from '@/components/MediaCard';
 import Pagination from '@/components/Pagination';
@@ -27,6 +28,7 @@ const MoviesPageClient = ({
 	const [sortValue, setSortValue] = useState('Most Popular');
 
 	const handleResetFilters = () => {
+		getAllMoviesAction('most popular', 1);
 		replace(`/movies`);
 		setCurrentPage(1);
 		setSortValue('Most Popular');

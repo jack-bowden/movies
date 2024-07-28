@@ -59,10 +59,10 @@ const Pagination = ({
 			</span>
 
 			<div className='hidden md:flex space-x-2'>
-				{currentPage > 3 && (
+				{currentPage > 4 && (
 					<>
 						<Button onClick={() => onPageChange(1)}>1</Button>
-						{currentPage > 4 && <span>...</span>}
+						<span>...</span>
 					</>
 				)}
 
@@ -76,9 +76,9 @@ const Pagination = ({
 					</Button>
 				))}
 
-				{currentPage < totalPages - 2 && (
+				{currentPage < totalPages - 4 && (
 					<>
-						{currentPage < totalPages - 3 && <span>...</span>}
+						<span>...</span>
 						<Button onClick={() => onPageChange(totalPages)}>
 							{totalPages}
 						</Button>
@@ -88,9 +88,9 @@ const Pagination = ({
 
 			<div className='flex md:hidden space-x-4'>
 				{currentPage > 2 && renderPageItem(1)}
-				{currentPage > 3 && renderPageItem('...')}
+				{currentPage > 4 && renderPageItem('...')}
 				{getPageNumbers().map(renderPageItem)}
-				{currentPage < totalPages - 1 && renderPageItem('...')}
+				{currentPage < totalPages - 3 && renderPageItem('...')}
 				{currentPage < totalPages && renderPageItem(totalPages)}
 			</div>
 

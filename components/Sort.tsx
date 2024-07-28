@@ -1,5 +1,6 @@
 'use client';
 
+import { useCapitalizeQuery } from '@/lib/useCapitalizeQuery';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { ChevronDownIcon } from 'lucide-react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
@@ -28,14 +29,22 @@ const Sort = ({ sortValue, setSortValue }: SortProps) => {
 		replace(`${pathname}?${params.toString()}`);
 	};
 
+	const displaySortValue = () => {
+		const paramSort = searchParams.get('sort');
+		if (paramSort) {
+			return useCapitalizeQuery(paramSort);
+		}
+		return sortValue || 'Sort';
+	};
+
 	return (
 		<Menu
 			as='div'
 			className='relative inline-block text-left'
 		>
 			<div>
-				<MenuButton className='group inline-flex justify-center text-xs  truncate bg-gradient-to-b from-gray-300 to-gray-400 text-transparent bg-clip-text hover:text-gray-500'>
-					{sortValue}
+				<MenuButton className='group inline-flex justify-center text-xs truncate bg-gradient-to-b from-gray-300 to-gray-400 text-transparent bg-clip-text hover:text-gray-500'>
+					{displaySortValue()}
 					<ChevronDownIcon
 						size={50}
 						className='-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500'
@@ -51,7 +60,7 @@ const Sort = ({ sortValue, setSortValue }: SortProps) => {
 							{({ active }) => (
 								<p
 									onClick={() => handleSort(option)}
-									className={`block px-4 py-2 text-sm text-gray-400 cursor-pointer transition-all ${
+									className={`block px-4 py-2 text-xs text-gray-400 cursor-pointer transition-all ${
 										active ? 'bg-gray-100' : ''
 									}`}
 								>

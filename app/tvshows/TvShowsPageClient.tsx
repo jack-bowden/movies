@@ -1,5 +1,6 @@
 'use client';
 
+import getAllTvShowsAction from '@/actions/getAllTvShowsAction';
 import Heading from '@/components/Heading';
 import MediaCard from '@/components/MediaCard';
 import Pagination from '@/components/Pagination';
@@ -27,6 +28,7 @@ const TvShowsPageClient = ({
 	const [sortValue, setSortValue] = useState('Most Popular');
 
 	const handleResetFilters = () => {
+		getAllTvShowsAction('most popular', 1);
 		replace(`/tvshows`);
 		setCurrentPage(1);
 		setSortValue('Most Popular');
