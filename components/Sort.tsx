@@ -31,7 +31,7 @@ const Sort = ({ sortValue, setSortValue }: SortProps) => {
 	return (
 		<Menu
 			as='div'
-			className='relative inline-block text-left'
+			className='relative inline-block text-left ml-4'
 		>
 			<div>
 				<MenuButton className='group inline-flex justify-center text-md sm:text-lg md:text-xl truncate bg-gradient-to-b from-gray-300 to-gray-400 text-transparent bg-clip-text hover:text-gray-500'>
