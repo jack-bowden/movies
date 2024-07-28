@@ -1,8 +1,6 @@
 import IndividualMediaCard from '@/components/IndividualMediaCard';
 import { Cast, IndividualMedia, TMDBProps } from '@/types';
 
-import React from 'react';
-
 interface IndividualMoviePageClientProps {
 	movie: IndividualMedia;
 	cast: Cast;

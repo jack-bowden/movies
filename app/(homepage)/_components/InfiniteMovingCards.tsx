@@ -3,7 +3,7 @@
 import { cn } from '@/lib/utils';
 import { Result, TMDBProps } from '@/types';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface InfiniteMovingCardsProps {
 	direction?: 'left' | 'right';
@@ -24,8 +24,8 @@ export const InfiniteMovingCards = ({
 	clerkUserId,
 	favorites,
 }: InfiniteMovingCardsProps) => {
-	const containerRef = React.useRef<HTMLDivElement>(null);
-	const scrollerRef = React.useRef<HTMLUListElement>(null);
+	const containerRef = useRef<HTMLDivElement>(null);
+	const scrollerRef = useRef<HTMLUListElement>(null);
 
 	useEffect(() => {
 		addAnimation();

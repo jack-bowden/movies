@@ -1,7 +1,5 @@
 'use client';
 
-import React from 'react';
-
 const HomePageSkeleton = () => {
 	return (
 		<main className='container mx-auto px-4 py-6'>

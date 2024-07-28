@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import StarRatings from 'react-star-ratings';
 
 export interface StarRatingsProps {
