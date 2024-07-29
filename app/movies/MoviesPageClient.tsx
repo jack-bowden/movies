@@ -3,6 +3,7 @@
 import getAllMoviesAction from '@/actions/getAllMoviesAction';
 import Heading from '@/components/Heading';
 import MediaCard from '@/components/MediaCard';
+import MobilePagination from '@/components/MobilePagination';
 import Pagination from '@/components/Pagination';
 import Sort from '@/components/Sort';
 import { Button } from '@/components/ui/button';
@@ -70,11 +71,18 @@ const MoviesPageClient = ({
 					favorites={favorites}
 				/>
 			</div>
-			<Pagination
-				currentPage={currentPage}
-				totalPages={movies.total_pages}
-				onPageChange={handlePageChange}
-			/>
+			<div className='hidden md:block'>
+				<Pagination
+					totalPages={movies.total_pages}
+					onPageChange={handlePageChange}
+				/>
+			</div>
+			<div className='block md:hidden'>
+				<MobilePagination
+					totalPages={movies.total_pages}
+					onPageChange={handlePageChange}
+				/>
+			</div>
 		</main>
 	);
 };
