@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from '@/components/ui/button';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
