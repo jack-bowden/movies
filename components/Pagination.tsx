@@ -1,20 +1,27 @@
+'use client';
+
 import { Button } from '@/components/ui/button';
+import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 interface PaginationProps {
-	currentPage: number;
 	totalPages: number;
 	onPageChange: (page: number) => void;
 }
 
-const Pagination = ({
-	currentPage,
-	totalPages,
-	onPageChange,
-}: PaginationProps) => {
+const Pagination = ({ totalPages, onPageChange }: PaginationProps) => {
+	const searchParams = useSearchParams();
+	const [currentPage, setCurrentPage] = useState<number | null>(null);
+
+	useEffect(() => {
+		const page = searchParams ? Number(searchParams.get('page')) || null : null;
+		setCurrentPage(page);
+	}, [searchParams]);
+
 	const getPageNumbers = () => {
 		const pageNumbers = [];
 		const totalDisplayed = 5;
-		let start = Math.max(1, currentPage - 2);
+		let start = Math.max(1, (currentPage || 1) - 2);
 		let end = Math.min(totalPages, start + totalDisplayed - 1);
 
 		if (end - start + 1 < totalDisplayed) {
@@ -28,10 +35,15 @@ const Pagination = ({
 		return pageNumbers;
 	};
 
+	const handlePageChange = (page: number) => {
+		setCurrentPage(page);
+		onPageChange(page);
+	};
+
 	const renderPageItem = (number: number | string) => (
 		<span
 			key={number}
-			onClick={() => typeof number === 'number' && onPageChange(number)}
+			onClick={() => typeof number === 'number' && handlePageChange(number)}
 			className={`cursor-pointer text-xl ${
 				currentPage === number
 					? 'text-green-500 font-bold'
@@ -42,44 +54,54 @@ const Pagination = ({
 		</span>
 	);
 
+	const isPageActive = (number: number) =>
+		(currentPage === null && number === 1) || currentPage === number;
+
 	return (
 		<div className='flex w-full items-center justify-center space-x-2 md:space-x-4 mt-4'>
 			<Button
+				size='sm'
 				className='hidden md:inline-flex'
-				disabled={currentPage === 1}
-				onClick={() => onPageChange(currentPage - 1)}
+				disabled={currentPage === 1 || currentPage === null}
+				onClick={() => handlePageChange((currentPage || 1) - 1)}
 			>
 				Previous
 			</Button>
 			<span
 				className='md:hidden cursor-pointer hover:text-gray-400'
-				onClick={() => currentPage > 1 && onPageChange(currentPage - 1)}
+				onClick={() =>
+					currentPage && currentPage > 1 && handlePageChange(currentPage - 1)
+				}
 			>
 				{'<'}
 			</span>
 
 			<div className='hidden md:flex space-x-2'>
-				{currentPage > 4 && (
+				{(currentPage || 1) > 4 && (
 					<>
-						<Button onClick={() => onPageChange(1)}>1</Button>
+						<Button onClick={() => handlePageChange(1)}>1</Button>
 						<span>...</span>
 					</>
 				)}
 
 				{getPageNumbers().map(number => (
 					<Button
+						size='sm'
 						key={number}
-						onClick={() => onPageChange(number)}
-						className={currentPage === number ? 'bg-green-500 text-white' : ''}
+						onClick={() => handlePageChange(number)}
+						className={isPageActive(number) ? 'bg-green-500 text-white' : ''}
 					>
 						{number}
 					</Button>
 				))}
 
-				{currentPage < totalPages - 4 && (
+				{(currentPage || 1) < totalPages - 4 && (
 					<>
 						<span>...</span>
-						<Button onClick={() => onPageChange(totalPages)}>
+						<Button
+							size='sm'
+							onClick={() => handlePageChange(totalPages)}
+						>
 							{totalPages}
 						</Button>
 					</>
@@ -87,24 +109,27 @@ const Pagination = ({
 			</div>
 
 			<div className='flex md:hidden space-x-4'>
-				{currentPage > 2 && renderPageItem(1)}
-				{currentPage > 4 && renderPageItem('...')}
+				{(currentPage || 1) > 2 && renderPageItem(1)}
+				{(currentPage || 1) > 4 && renderPageItem('...')}
 				{getPageNumbers().map(renderPageItem)}
-				{currentPage < totalPages - 3 && renderPageItem('...')}
-				{currentPage < totalPages && renderPageItem(totalPages)}
+				{(currentPage || 1) < totalPages - 3 && renderPageItem('...')}
+				{(currentPage || 1) < totalPages && renderPageItem(totalPages)}
 			</div>
 
 			<Button
+				size='sm'
 				className='hidden md:inline-flex'
 				disabled={currentPage === totalPages}
-				onClick={() => onPageChange(currentPage + 1)}
+				onClick={() => handlePageChange((currentPage || 1) + 1)}
 			>
 				Next
 			</Button>
 			<span
 				className='md:hidden cursor-pointer hover:text-gray-400'
 				onClick={() =>
-					currentPage < totalPages && onPageChange(currentPage + 1)
+					currentPage !== null &&
+					currentPage < totalPages &&
+					handlePageChange(currentPage + 1)
 				}
 			>
 				{'>'}
