@@ -1,5 +1,6 @@
 'use client';
 
+import StarRating from '@/components/StarRatings';
 import { cn } from '@/lib/utils';
 import { Result, TMDBProps } from '@/types';
 import Link from 'next/link';
@@ -21,8 +22,6 @@ export const InfiniteMovingCards = ({
 	pauseOnHover = true,
 	className,
 	trendingMovies,
-	clerkUserId,
-	favorites,
 }: InfiniteMovingCardsProps) => {
 	const containerRef = useRef<HTMLDivElement>(null);
 	const scrollerRef = useRef<HTMLUListElement>(null);
@@ -121,11 +120,19 @@ export const InfiniteMovingCards = ({
 									opacity: 0.8,
 								}}
 							>
-								<div className='absolute bottom-0 left-0 right-0 p-2 bg-black bg-opacity-50'>
-									<h3 className='text-white text-sm sm:text-md font-semibold'>
-										{item.title}
-									</h3>
-									<p className='text-gray-300 text-sm'>{item.release_date}</p>
+								<div className='absolute inset-0 bg-gradient-to-t from-black/80 to-black/20 opacity-100 transition-opacity duration-300'>
+									<div className='absolute bottom-0 left-0 right-0 p-2'>
+										<h3 className='text-white text-md sm:text-lg font-bold z-50 drop-shadow-lg truncate md:whitespace-normal'>
+											{item.title}
+										</h3>
+										<p className='text-gray-200 text-sm z-50 drop-shadow-lg'>
+											{item.release_date}
+										</p>
+										<StarRating
+											rating={item.vote_average}
+											dimension='16px'
+										/>
+									</div>
 								</div>
 							</div>
 						</Link>

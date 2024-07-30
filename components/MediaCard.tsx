@@ -92,7 +92,7 @@ const MediaCard = ({
 										alt={item.name || item.title || 'Image'}
 										fill
 									/>
-									<div className='absolute inset-0 bg-gradient-to-t from-black to-black/20 opacity-0 hover:opacity-100 transition-opacity duration-300'>
+									<div className='absolute inset-0 bg-gradient-to-t from-black to-black/20 opacity-100 md:opacity-0 md:hover:opacity-100 transition-opacity duration-300'>
 										<div className='absolute bottom-0 left-0 right-0 p-4'>
 											<h3 className='text-white text-sm font-semibold line-clamp-2'>
 												{item.name || item.title}
