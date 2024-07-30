@@ -55,7 +55,7 @@ input[type='search']::-webkit-search-results-decoration {
 
 @layer base {
 	:root {
-		--background: 0 10% 10%;
+		--background: 0 6% 6%;
 		--foreground: 0 0% 75%;
 		--card: 0 0% 10%;
 		--card-foreground: 0 0% 90%;
