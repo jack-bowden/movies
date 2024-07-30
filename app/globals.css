@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@import 'normalize.css';
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
 html,
 body,
 :root {
