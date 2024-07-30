@@ -13,7 +13,7 @@ const PersonPageClient = ({ person }: PersonPageProps) => {
 		<main className='container mx-auto px-4 py-6'>
 			<div className='mb-6'>
 				<div className='grid grid-cols-3 gap-4 items-center mb-6'>
-					<Heading title='Person' />
+					<Heading title='Cast Member' />
 				</div>
 				<PersonCard media={person} />
 			</div>
