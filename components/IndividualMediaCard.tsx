@@ -7,6 +7,7 @@ import MediaCard from './MediaCard';
 import CastCard from './CastCard';
 import { auth } from '@clerk/nextjs/server';
 import { getFavorites } from '@/hooks/getFavorites';
+import IndividualMoviePageClientSkeleton from '@/app/movies/[id]/loading';
 
 interface IndividualMediaCardProps {
 	media: IndividualMedia;
@@ -21,6 +22,10 @@ const IndividualMediaCard = async ({
 }: IndividualMediaCardProps) => {
 	const { userId: clerkUserId } = auth();
 	const favorites = await getFavorites(clerkUserId!);
+
+	if (!media) {
+		return <IndividualMoviePageClientSkeleton />;
+	}
 
 	const handleBudgetDisplay = () => {
 		if (media.budget > 0) {
