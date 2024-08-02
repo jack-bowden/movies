@@ -1,5 +1,6 @@
 import IndividualMediaCard from '@/components/IndividualMediaCard';
 import { Cast, IndividualMedia, TMDBProps } from '@/types';
+import IndividualMoviePageClientSkeleton from './loading';
 
 interface IndividualMoviePageClientProps {
 	movie: IndividualMedia;
@@ -12,6 +13,7 @@ const IndividualMoviePageClient = ({
 	cast,
 	similar,
 }: IndividualMoviePageClientProps) => {
+	if (!movie) return <IndividualMoviePageClientSkeleton />;
 	return (
 		<main className='container mx-auto px-4 py-6'>
 			<div className='overflow-x-auto pb-4'>
