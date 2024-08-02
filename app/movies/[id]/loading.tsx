@@ -6,17 +6,15 @@ const IndividualMoviePageClientSkeleton = () => {
 	const pathname = usePathname();
 	const params = useParams();
 
-	if (pathname === `/movies/${params.id}`) {
-		return (
-			<main className='container mx-auto px-4 py-6'>
-				<div className='overflow-x-auto pb-4'>
-					<div className='flex space-x-4'>
-						<IndividualMediaCardSkeleton />
-					</div>
+	return (
+		<main className='container mx-auto px-4 py-6'>
+			<div className='overflow-x-auto pb-4'>
+				<div className='flex space-x-4'>
+					<IndividualMediaCardSkeleton />
 				</div>
-			</main>
-		);
-	}
+			</div>
+		</main>
+	);
 };
 
 const IndividualMediaCardSkeleton = () => {
